@@ -1,47 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipe Finder App</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1><i class="fas fa-utensils"></i> Recipe Finder</h1>
-        <p>Find delicious recipes from around the world</p>
-      </header>
-
-      <p class="api-link">Data from <a href="https://www.themealdb.com/api.php">TheMealDB 🧑‍🍳</a></p>
-
-      <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search for meals or keywords" />
-        <button id="search-btn">Search</button>
-      </div>
-
-      <div id="error-container" class="hidden">
-        <p>No meals found. Try another search term!</p>
-      </div>
-
-      <div id="result-heading"></div>
-
-      <div id="meals" class="meals-container"></div>
-
-      <div id="meal-details" class="hidden">
-        <button id="back-btn"><i class="fas fa-arrow-left"></i> Back to recipes</button>
-
-        <div class="meal-details-content"></div>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover delicious recipes from around the world with Recipe Finder Pro.">
+  <title>Recipe Finder</title>
+  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-container">
+      <h1><i class="fas fa-utensils"></i> Recipe Finder</h1>
+      <p>Search, filter, and discover delicious recipes from around the world.</p>
+      <button id="theme-toggle"><i class="fas fa-moon"></i> Dark Mode</button>
     </div>
+  </header>
 
-    <script src="script.js"></script>
-  </body>
+  <main class="container">
+    <p class="api-link">Data from <a href="https://www.themealdb.com/api.php">TheMealDB 🧑‍🍳</a></p>
+
+    <section class="search-section">
+      <input type="text" id="search-input" placeholder="Search meals or keywords" autocomplete="off">
+      <button id="search-btn"><i class="fas fa-search"></i> Search</button>
+      <ul id="autocomplete-list" class="autocomplete-list hidden"></ul>
+    </section>
+
+    <section class="filter-section">
+      <select id="category-filter"><option value="">All Categories</option></select>
+      <select id="area-filter"><option value="">All Areas</option></select>
+      <select id="ingredient-filter"><option value="">All Ingredients</option></select>
+    </section>
+
+    <div id="loader" class="loader hidden"><i class="fas fa-spinner fa-spin fa-3x"></i></div>
+    <section id="error-container" class="error-message hidden"></section>
+    <section id="result-heading" class="result-heading"></section>
+    <section id="meals" class="meals-container"></section>
+  </main>
+
+  <!-- Modal for meal details -->
+  <div id="meal-modal" class="meal-modal hidden">
+    <div class="meal-modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <div class="meal-details-content"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Recipe Finder by DevAr. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
